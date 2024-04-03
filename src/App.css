@@ -1,0 +1,469 @@
+/* Existing CSS */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+:root {
+    --gradient: linear-gradient( 135deg, #72EDF2 10%, #5151E5 10%);
+}
+
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    line-height: 0.75em
+}
+
+.clear {
+    clear: both;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh; /* Sayfanın tamamını kapla */
+    font-family: 'Montserrat', sans-serif;
+    background-color: #343d4b;
+    display: flex;
+    align-items: center; /* Dikey eksende ortala */
+    justify-content: center; /* Yatay eksende ortala */
+}
+
+.container {
+    margin: 1%;
+    border-radius: 25px;
+    box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+    background-color: #222831;
+    color: #ffffff;
+    /* height: 100%; */
+    /* display: flex; */ /* Bu satırı kaldırın */
+}
+
+.weather-side {
+    position: relative;
+    border-radius: 25px;
+    width: 100%;
+    height: auto; /* Resmin boyutuna göre yükseklik */
+    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+    transition: transform 300ms ease;
+    transform: translateZ(0) scale(1.02) perspective(1000px);
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.weather-side:hover {
+    transform: scale(1.1) perspective(1500px) rotateY(10deg);
+}
+
+.weather-gradient {
+    background-image: var(--gradient);
+    border-radius: 25px 0 0 25px; 
+    opacity: 0.6;
+    width: 100%; /* Çerçevenin genişliği her zaman %100 olacak */
+    height: 100%; /* Çerçevenin yüksekliği her zaman %100 olacak */
+    object-fit: cover; /* Resmin boyutunu korumak için */
+}
+.date-container {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.date-dayname {
+    margin: 0;
+    color: #fff2f2; 
+    font-size: xx-large;
+}
+
+.date-day {
+    display: block;
+    color: #fffefe;
+    font-size: larger;
+}
+
+.location {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.location-icon {
+    display: inline-block;
+    height: 0.8em;
+    width: auto;
+    margin-right: 5px;
+    
+}
+
+.weather-container {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    color: #fcf9f9; 
+}
+
+.weather-icon.feather {
+    height: 60px;
+    width: auto;
+}
+
+.weather-temp {
+    margin: 0;
+    font-weight: 700;
+    font-size: 4em;
+}
+
+.weather-desc {
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .weather-side {
+        width: 100%;
+        float: none;
+        margin-bottom: 20px;
+    }
+}
+
+
+.info-side {
+    flex-grow: 1; 
+    padding: 20px; 
+}
+
+.today-info {
+    padding: 15px;
+    margin: 0 25px 25px 25px;
+    border-radius: 10px;
+}
+
+.today-info>div:not(:last-child) {
+    margin: 0 0 10px 0;
+}
+
+.today-info>div .title {
+    float: left;
+    font-weight: 700;
+}
+
+.today-info>div .value {
+    float: right;
+}
+
+.week-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px auto; /* Dikey olarak ortala */
+    box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden; /* Satırları sığdırmak için */
+    max-width: 1000px; /* Opsiyonel: Max genişlik ayarı */
+}
+
+.week-list > li {
+    float: left;
+    padding: 15px;
+    cursor: pointer;
+    transition: 200ms ease;
+    border-radius: 10px;
+    width: calc(100% / 3); /* Eşit genişlik ayarı */
+    box-sizing: border-box; /* Padding ve border'ları genişliğe dahil et */
+    text-align: center; /* İçeriği yatay olarak ortala */
+}
+
+.week-list > li:hover {
+    transform: scale(1.1);
+    background: #fff;
+    color: #222831;
+    box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+}
+
+.week-list > li.active {
+    background: #fff;
+    color: #222831;
+    border-radius: 10px;
+}
+
+.week-list > li .day-name {
+    display: block;
+    margin: 10px 0 0 0;
+}
+
+.week-list > li .day-icon {
+    display: block;
+    height: 30px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.week-list > li .day-temp {
+    display: block;
+    margin: 10px 0 0 0;
+    font-weight: 700;
+}
+
+
+.location-container {
+    padding: 25px 35px;
+}
+
+.location-button {
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    background-image: var(--gradient);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: transform 200ms ease;
+}
+
+.location-button:hover {
+    transform: scale(0.95);
+}
+
+.location-button .feather {
+    height: 1em;
+    width: auto;
+    margin-right: 5px;
+}
+
+.enlarge-input {
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    text-align: center; 
+    font-weight: bold; 
+    font-family: Montserrat; 
+    font-size: 20px; 
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        height: auto;
+        margin: 15px;
+    }
+
+    .weather-side {
+        width: 100%;
+        float: none;
+    }
+
+    .info-side {
+        float: none;
+        padding-top: 0;
+    }
+}
+
+
+.today-info {
+	padding: 15px;
+	margin: 0 25px 25px 25px;
+ 
+	border-radius: 10px;
+}
+
+.today-info>div:not(:last-child) {
+	margin: 0 0 10px 0;
+}
+
+.today-info>div .title {
+	float: left;
+	font-weight: 700;
+}
+
+.today-info>div .value {
+	float: right;
+
+}
+
+.week-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 10px 35px;
+	-webkit-box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
+	        box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	background: 
+}
+
+.week-list>li {
+	float: left;
+	padding: 15px;
+	cursor: pointer;
+	-webkit-transition: 200ms ease;
+	-o-transition: 200ms ease;
+	transition: 200ms ease;
+	border-radius: 10px;
+}
+
+.week-list>li:hover {
+	-webkit-transform: scale(1.1);
+	    -ms-transform: scale(1.1);
+	        transform: scale(1.1);
+	background: #fff;
+	color: #222831;
+	-webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+	        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
+}
+
+.week-list>li.active {
+	background: #fff;
+	color: #222831;
+	border-radius: 10px;
+}
+
+.week-list>li .day-name {
+	display: block;
+	margin: 10px 0 0 0;
+	text-align: center;
+}
+
+.week-list>li .day-icon {
+	display: block;
+	height: 30px;
+	width: auto;
+	margin: 0 auto;
+}
+
+.week-list>li .day-temp {
+	display: block;
+	text-align: center;
+	margin: 10px 0 0 0;
+	font-weight: 700;
+}
+
+.location-container {
+	padding: 25px 35px;
+}
+
+.location-button {
+	outline: none;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	border: none;
+	border-radius: 25px;
+	padding: 10px;
+	font-family: 'Montserrat', sans-serif;
+	background-image: var(--gradient);
+	color: #ffffff;
+	font-weight: 700;
+	-webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+	        box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+	-webkit-transition: -webkit-transform 200ms ease;
+	transition: -webkit-transform 200ms ease;
+	-o-transition: transform 200ms ease;
+	transition: transform 200ms ease;
+	transition: transform 200ms ease, -webkit-transform 200ms ease;
+}
+
+.location-button:hover {
+	-webkit-transform: scale(0.95);
+	    -ms-transform: scale(0.95);
+	        transform: scale(0.95);
+}
+
+.location-button .feather {
+	height: 1em;
+	width: auto;
+	margin-right: 5px;
+}
+
+.enlarge-input {
+	width: 100%;
+	height: 50px;
+	border-radius: 20px;
+	text-align: center; 
+	font-weight: bold; 
+	font-family: Montserrat; 
+	font-size: 20px; 
+  }
+
+  /* switch*/
+ 
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: right;
+    width: 100vw;
+    height: 100vh;
+    background-color: #24262D;
+    color: white;
+  }
+  
+  .switch {
+    display: flex;
+    align-items: right; 
+  }
+  
+  .switch > label {
+    margin-left: 10px; 
+    position: relative;
+  }
+  
+  .switch > input[type="checkbox"] {
+    opacity: 0;
+  }
+  
+  .switch > label::before, 
+  .switch > label::after {
+    --switch-width: 40px;
+    --switch-height: 20px;
+    content: "";
+    position: absolute;
+    height: var(--switch-height);
+  }
+  
+  .switch > label::before {
+    width: var(--switch-width);
+    border: 1px solid white;
+    top: 0;
+    left: calc(0px - var(--switch-width) - 5px);
+    border-radius: var(--switch-width);
+  }
+  
+  .switch > label::after {
+    width: var(--switch-height);
+    height: var(--switch-height);
+    top: 1px;
+    border-radius: var(--switch-height);
+    left: calc(0px - var(--switch-width) - 4px);
+    transition: transform .3s;
+    background-color: white;
+    transform-origin: left;
+  }
+  
+  .switch > input[type=checkbox]:not(:checked) ~ label::after {
+    transform: translateX(0);
+  }
+  
+  .switch > input[type=checkbox]:checked ~ label::after {
+    transform: translateX(calc(var(--switch-width) / 2));
+  }
+  
+  .switch > input[type=checkbox]:checked ~ label::before {
+    background-color: #4caf50;
+  }
+  
+  
+  
+  
+  
+  
+
+  
+
+
+
+
+
+ 
+
+
+
